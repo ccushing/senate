@@ -13,11 +13,12 @@
 
 # Guest Routes for Get operations
 
-
+/*
 	Route::get('/', function () {
 	    return 'Hello World';
 	});
-
+*/
+	Route::get('/', 'SenateDashboardController@getHome');
 	Route::get('/Home', 'SenateDashboardController@getHome');
 	Route::get('/About', 'SenateDashboardController@getAbout');
 	Route::get('/FAQ', 'SenateDashboardController@getFAQ');
