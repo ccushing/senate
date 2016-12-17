@@ -19,7 +19,7 @@
 
                                     <li>
                                         <i class="fa fa-home"></i>
-                                        <a href="senatedashboard.html">Home
+                                        <a href="/SenateDashboard">Home
 
                                         </a>
 
@@ -56,7 +56,7 @@
 
                                             <a href="#" class="btn" id="PartyBG">
                                                 <h3 id="SenatorName">Sen</h3>
-                                                <img id="SenatorPIC" src="senatepics/blank.png" height="165" alt="senator">
+                                                <img id="SenatorPIC" src="/senatepics/blank.png" height="165" alt="senator">
 
                                                 <em id="SenatorParty">Party : </em>
                                                 <em id="SenatorState">State : </em>
@@ -211,6 +211,40 @@
                 </div>
 
             </div>
+
+
+            <div class="footer">
+                2014 &copy; Charles Cushing
+            </div>
+
+            <!--    Bootstrap, JQuery, JQCloud, Graph (Flot), Datatables and linq js plugins -->
+            <script src="/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+            <script src="/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="/plugins/jqcloud-1.0.4.min.js" type="text/javascript"></script>
+            <script src="/plugins/flot/jquery.flot.js" type="text/javascript"></script>
+            <script src="/plugins/data-tables/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="/plugins/data-tables/DT_bootstrap.js" type="text/javascript"></script>
+            <script src="/plugins/linq.js" type="text/javascript"></script>
+            <script src="/plugins/helper-functions.js" type="text/javascript"></script>
+
+            <!--   Javascript Library for the Site -->
+            <script src="/js/dashboard-init.js" type="text/javascript"></script>
+
+
+
+            <script>
+                jQuery(document).ready(function () {
+
+                    //var senatorKey = getParameterByName('senatorkey');
+                    //var href = window.location.href;
+                    //var senatorKey = href.substr(href.lastIndexOf('/') + 1);
+                    //var senatorKey = {{$senator_id}};
+                    
+                    InitSenatorDashboard({{$senator_id}});
+
+                });
+
+            </script>
 
 
 

@@ -10,14 +10,14 @@
 
 
     <!--    Bootstrap CSS Files and CSS Plugins -->
-    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="plugins/style-responsive.css" rel="stylesheet" type="text/css" />
-    <link href="plugins/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="plugins/wordcloud.css" rel="stylesheet" type="text/css" />
-    <link href="plugins/jqcloud.css" rel="stylesheet" type="text/css" />
+    <link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/plugins/style-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="/plugins/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="/plugins/wordcloud.css" rel="stylesheet" type="text/css" />
+    <link href="/plugins/jqcloud.css" rel="stylesheet" type="text/css" />
 
     <!--    CSS File for the Site -->
-    <link href="css/combined.css" rel="stylesheet" type="text/css" />
+    <link href="/css/combined.css" rel="stylesheet" type="text/css" />
 
 
 </head>
@@ -32,7 +32,7 @@
         <div class="header navbar navbar-inverse" id="header">
 
             <div id="logo">
-                <img src="img/logo.png" alt="logo" class="logo" />
+                <img src="/img/logo.png" alt="logo" class="logo" />
             </div>
 
             <div id="headertitle">
@@ -45,10 +45,10 @@
 
             <div id="topnav">
                 <ul class="page-breadcrumb breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Donate</a></li>
+                    <li><a href="/Home">Home</a></li>
+                    <li><a href="/About">About</a></li>
+                    <li><a href="/FAQ">FAQ</a></li>
+                    <li><a href="/Donate">Donate</a></li>
                 </ul>
             </div>
 
@@ -76,7 +76,7 @@
 
 
                         <li class="start active ">
-                            <a href="senatedashboard.html">
+                            <a href="/SenateDashboard">
                                 <i class="fa fa-bar-chart-o"></i>
                                 <span class="active">Social Media
                                 </span>
@@ -86,7 +86,7 @@
 
                         <li class="closed">
                             <a href="#" onclick="$('#SenatorsSubMenu').toggle();">
-                                <img src="img/open.png" class="nav-img" alt="open" />
+                                <img src="/img/open.png" class="nav-img" alt="open" />
                                 <span class="title">Senators </span>
 
                             </a>
@@ -97,7 +97,7 @@
 
 
                         <li class="">
-                            <a href="mostpopular.html">
+                            <a href="/MostPopular">
                                 <i class="fa fa-user"></i>
                                 <span class="active">Most Popular Senators
                                 </span>
@@ -135,37 +135,7 @@
 
             @yield('page-content')
 
-            <div class="footer">
-                2014 &copy; Charles Cushing
-            </div>
 
-
-
-             <!--    Bootstrap, JQuery, JQCloud, Graph (Flot), Datatables and linq js plugins -->
-            <script src="plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
-            <script src="plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-            <script src="plugins/jqcloud-1.0.4.min.js" type="text/javascript"></script>
-            <script src="plugins/flot/jquery.flot.js" type="text/javascript"></script>
-            <script src="plugins/data-tables/jquery.dataTables.js" type="text/javascript"></script>
-            <script src="plugins/data-tables/DT_bootstrap.js" type="text/javascript"></script>
-            <script src="plugins/linq.js" type="text/javascript"></script>
-            <script src="plugins/helper-functions.js" type="text/javascript"></script>
-
-
-            <!--   Javascript Library for the Site -->
-            <script src="js/dashboard-init.js" type="text/javascript"></script>
-
-
-
-            <script>
-                jQuery(document).ready(function () {
-
-                    InitDashboard();
-
-                });
-
-
-            </script>
 
 
         </div>

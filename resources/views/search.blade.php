@@ -23,7 +23,7 @@
                                         </a>
 
                                     </li>
-                                    <li>Most Popular Senators
+                                    <li>Search Results for {{$searchterm}}
                                     </li>
 
 
@@ -51,15 +51,15 @@
                                             <thead>
                                                 <tr>
                                                     <th aria-label="Senator : activate to sort column ascending"
-                                                        style="width: 129px;" colspan="1" rowspan="1" tabindex="0" class="sorting">Senator</th>
+                                                        style="width: 129px;" colspan="1" rowspan="1" tabindex="0" class="sorting">Author</th>
                                                     <th aria-label="Party : activate to sort column ascending"
-                                                        style="width: 77px;" colspan="1" rowspan="1" tabindex="0" class="sorting">Party</th>
+                                                        style="width: 77px;" colspan="1" rowspan="1" tabindex="0" class="sorting">Senator</th>
                                                     <th aria-label="State : activate to sort column ascending"
                                                         style="width: 72px;" colspan="1" rowspan="1" tabindex="0" class="sorting">State</th>
                                                     <th aria-label="Tweets : activate to sort column ascending"
-                                                        style="width: 85px;" colspan="1" rowspan="1" tabindex="0" class="sorting">Tweets</th>
-                                                    <th aria-label="Views : activate to sort column ascending"
                                                         style="width: 85px;" colspan="1" rowspan="1" tabindex="0" class="sorting">Views</th>
+                                                    <th aria-label="Views : activate to sort column ascending"
+                                                        style="width: 85px;" colspan="1" rowspan="1" tabindex="0" class="sorting">Tweet</th>
                                                     <th aria-label="Rank : activate to sort column ascending"
                                                         style="width: 85px;" colspan="1" rowspan="1" tabindex="0" class="sorting">Rank</th>
                                                 </tr>

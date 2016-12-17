@@ -30,4 +30,5 @@
 	
 
 # Guest Routes for Post operations
-	Route::post('/Search', 'SenateDashboardController@postSearch');
+	Route::get('/Search/{searchterm}', 'SenateDashboardController@postSearch');
+	Route::get('/Search/User/{userid}', 'SenateDashboardController@postSearchUser');

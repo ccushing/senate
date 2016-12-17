@@ -67,7 +67,7 @@ function BindSenatorBio(SenatorDashboardData) {
 
 
     // Load the Image
-    $("#SenatorPIC")[0].src = 'senatepics/Senate_' + SenatorDashboardData.SenatorKey + '.png';
+    $("#SenatorPIC")[0].src = '/senatepics/Senate_' + SenatorDashboardData.SenatorKey + '.png';
     $("#SenatorPIC")[0].title = 'Source : Wikipedia.org';
 
     if (SenatorDashboardData.SenatorParty == "Democratic") {
@@ -214,13 +214,12 @@ function BindSenatorGraph(SenatorDashboardData) {
     }
 
 
-
 }
 
 function LoadDashboardData() {
     // Load Dashboard Data from .json data file into the dashboardData variable
 
-    var url = "data/SenateDashboard_1.json";
+    var url = "/data/SenateDashboard_1.json";
     var dashboardData;
     var timeFrameName = "";
 
@@ -247,7 +246,7 @@ function LoadMostPopularData()
     {
     // Load Dashboard Data from .json data file into the dashboardData variable
     
-        var url = "data/mostpopular.json";
+        var url = "/data/mostpopular.json";
         var mostPopularData;
 
     $.ajax({
@@ -271,7 +270,7 @@ function LoadMostPopularData()
 
 function LoadSenatorData(SenatorKey)
 {
-    var url = 'data/senators/SenatorDashboard_' + SenatorKey + '_2.json';
+    var url = '/data/senators/SenatorDashboard_' + SenatorKey + '_2.json';
     var senatorDashboardData;
 
 
@@ -428,7 +427,7 @@ function BindInfluencerTable(InfluencerData) {
 
     // Loop through each record and append row to the table
     for (var i in InfluencerData) {
-        newRow = '<tr class="even gradeX"><td>' + InfluencerData[i].InfluencePercentile + '</td><td class=" "><a href="https://twitter.com/' + InfluencerData[i].UserName.replace(" ","") + '" target="_new">' + InfluencerData[i].UserName + '</a></td><td class=" "><a href="search.php?UserID=' + InfluencerData[i].UserID + '">' + InfluencerData[i].Tweets + '</td><td class=" ">' + addCommas(InfluencerData[i].Followers) + '</td><td><div class="progress" style="margin-bottom: 1px;width: 100%"><span class="progress-bar progress-bar-info" aria-valuemax="100" aria-valuemin="0" aria-valuenow="' + InfluencerData[i].InfluencePercentile + '" style="width: ' + InfluencerData[i].InfluencePercentile + '%;"></span></div></td></tr>';
+        newRow = '<tr class="even gradeX"><td>' + InfluencerData[i].InfluencePercentile + '</td><td class=" "><a href="https://twitter.com/' + InfluencerData[i].UserName.replace(" ","") + '" target="_new">' + InfluencerData[i].UserName + '</a></td><td class=" "><a href="/Search/User/' + InfluencerData[i].UserID + '">' + InfluencerData[i].Tweets + '</td><td class=" ">' + addCommas(InfluencerData[i].Followers) + '</td><td><div class="progress" style="margin-bottom: 1px;width: 100%"><span class="progress-bar progress-bar-info" aria-valuemax="100" aria-valuemin="0" aria-valuenow="' + InfluencerData[i].InfluencePercentile + '" style="width: ' + InfluencerData[i].InfluencePercentile + '%;"></span></div></td></tr>';
         $('#influencersTable > tbody:last').append(newRow);
     }
 
@@ -482,11 +481,11 @@ function BindTweetsTable(TweetsData) {
 
         newRow = '                           <tr class="tweets-row">' +
                                       ' <td style="display: none;">"0"</td>' +
-                                      ' <td class=""><a href="senatordashboard.html?senatorkey=' + sen.SenatorKey + '">' +
-                                      '     <img title="Sen. ' + sen.SenatorName + ' Source:Wikipedia.org" class="senate-pic" src="senatepics/Senate_' + sen.SenatorKey + '.png"></a></td>' +
+                                      ' <td class=""><a href="/SenatorDashboard/' + sen.SenatorKey + '">' +
+                                      '     <img title="Sen. ' + sen.SenatorName + ' Source:Wikipedia.org" class="senate-pic" src="/senatepics/Senate_' + sen.SenatorKey + '.png"></a></td>' +
                                       ' <td>' +
                                       '     <ul class="tweetsbox">' +
-                                      '         <li><a href="senatordashboard.html?senatorkey=' + sen.SenatorKey + '"><span>' + sen.SenatorName + '</span><span class="badge ' + badge + '"> ' + sen.Party.substring(0, 1) + '-' + sen.State + '</span></a></li>' +
+                                      '         <li><a href="/SenatorDashboard/' + sen.SenatorKey + '"><span>' + sen.SenatorName + '</span><span class="badge ' + badge + '"> ' + sen.Party.substring(0, 1) + '-' + sen.State + '</span></a></li>' +
                                       '         <li><a href="#">' + sen.UserName + '</a><span> on ' + sen.DateCreatedString + '</span><span class="score">Score : ' + sen.TweetScore + '</span></li>' +
                                       '         <li><span class="tweettext">' + sen.TwitterText + '</span></li>';
 
@@ -615,7 +614,7 @@ function BindMostPopular(MostPopularData) {
 
 
 
-        newRow = '<tr class="' + partyClass + '"><td><a href="senatordashboard.html?senatorkey=' + MostPopularData[i].SenatorKey + '">' + MostPopularData[i].SenatorName + '</a></td>' +
+        newRow = '<tr class="' + partyClass + '"><td><a href="/SenatorDashboard/' + MostPopularData[i].SenatorKey + '">' + MostPopularData[i].SenatorName + '</a></td>' +
                                     '<td>' + MostPopularData[i].Party + '</td>' +
                                      '<td>' + MostPopularData[i].State + '</td>' +
                                     '<td>' + formatNumber(MostPopularData[i].Tweets, { decimals: 0 }) + '</td>' +
@@ -661,7 +660,7 @@ function BindWordsTable(wordsData) {
         w = new Object();
         w.text = wordsData[i].Word;
         w.weight = wordsData[i].Relevance;
-        w.link = 'search.php?searchterm=' + wordsData[i].Word;
+        w.link = '/Search/' + wordsData[i].Word;
 
         word_array.push(w);
     }
@@ -694,7 +693,7 @@ function BindSenatorsNavBar(SenatorData)
         badge = "rep";
 
 
-        listItem = '<li id="senator_' + SenatorData[i].SenatorKey + '"><a href="senatordashboard.html?senatorkey=' + SenatorData[i].SenatorKey + '" class="senator-menuitem">' + SenatorData[i].SenatorName + '<span class="badge ' + badge + '"> ' + SenatorData[i].Party.substring(0, 1) + '-' + SenatorData[i].StateAbbr + '</span></a></li>';
+        listItem = '<li id="senator_' + SenatorData[i].SenatorKey + '"><a href="/SenatorDashboard/' + SenatorData[i].SenatorKey + '" class="senator-menuitem">' + SenatorData[i].SenatorName + '<span class="badge ' + badge + '"> ' + SenatorData[i].Party.substring(0, 1) + '-' + SenatorData[i].StateAbbr + '</span></a></li>';
     $('#SenatorsSubMenu').append(listItem);
  }
 

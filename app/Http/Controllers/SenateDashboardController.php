@@ -55,11 +55,25 @@ class SenateDashboardController extends Controller {
     }
 
 
-        public function getDonate(Request $request) {
+    public function getDonate(Request $request) {
 
         return view('donate', ['message' => ""]);
 
     }
+
+
+    public function postSearch(Request $request,$searchterm) {
+
+        return view('search', ['searchterm' => $searchterm]);
+
+    }
+
+    public function postSearchUser(Request $request,$userid) {
+
+        return view('search', ['userid' => $userid]);
+
+    }
+
 
 
 }
