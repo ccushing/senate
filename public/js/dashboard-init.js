@@ -219,7 +219,7 @@ function BindSenatorGraph(SenatorDashboardData) {
 function LoadDashboardData() {
     // Load Dashboard Data from .json data file into the dashboardData variable
 
-    var url = "/data/SenateDashboard_1.json";
+    var url = "/data/CongressDashboard_1.json";
     var dashboardData;
     var timeFrameName = "";
 

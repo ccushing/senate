@@ -85,7 +85,7 @@
                                     </div>
                                     <div class="portlet-body" id="GraphPortlet">
                                         <div id="site_statistics_loading">
-                                            <img src="img/loading.gif" alt="loading" />
+                                            <img src="/img/loading.gif" alt="loading" />
                                         </div>
                                         <div id="site_statistics_content" class="display-none">
                                             <div id="site_statistics" class="chart">
