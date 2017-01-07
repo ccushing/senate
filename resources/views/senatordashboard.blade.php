@@ -5,12 +5,13 @@
  <div class="page-content-wrapper">
                 <div class="page-content-wrapper">
                     <div class="page-content">
+                    <span id="">SenatorDashboard</span>
 
 
                         <div class="row">
                             <div class="col-md-12">
 
-                                <h3 id="PageTitleHeader2" class="page-title">Senate Social Media 
+                                <h3 id="PageTitleHeader2" class="page-title" >Senate Social Media 
                                     <br>
                                     <small>A real-time dashboard of what people are saying about the Unites States Senate on Twitter in the past week.</small>
                                 </h3>
@@ -36,8 +37,10 @@
                         </div>
 
 
+
                         <div class="clearfix">
                         </div>
+
 
                         <div class="row">
 
@@ -51,7 +54,12 @@
                                             <a class="collapse" href="#" onclick="$('#BioPortlet').toggle();"></a>
                                         </div>
                                     </div>
-                                    <div class="portlet-body" id="BioPortlet">
+
+
+
+
+                                    <div class="portlet-body" id="BioPortlet">               
+
                                         <div class="top-news">
 
                                             <a href="#" class="btn" id="PartyBG">

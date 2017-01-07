@@ -26,10 +26,12 @@
 
 
 	Route::get('/MostPopular', 'SenateDashboardController@getMostPopular');
+	Route::get('/MostPopular/{timeframe}', 'SenateDashboardController@getMostPopular');
 	Route::get('/SenateDashboard', 'SenateDashboardController@getSenateDashboard');
 	Route::get('/SenatorDashboard/{senator_id}', 'SenateDashboardController@getSenatorDashboard');
-	
+	Route::get('/Trending/{timeframe}', 'SenateDashboardController@getTrending');
+	Route::get('/Search/{searchterm}', 'SenateDashboardController@getSearch');
 
 # Guest Routes for Post operations
-	Route::get('/Search/{searchterm}', 'SenateDashboardController@postSearch');
-	Route::get('/Search/User/{userid}', 'SenateDashboardController@postSearchUser');
+	Route::post('/Search', 'SenateDashboardController@postSearch');
+	Route::post('/Search/User/{userid}', 'SenateDashboardController@postSearchUser');

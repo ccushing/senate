@@ -645,7 +645,9 @@ li.active-item {
         color:#FF0000;
     }
 
-
+p.timeframe{
+    padding-left: 20px;
+}
 
 
 /* Media Query Rules for Tablets */

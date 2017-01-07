@@ -13,33 +13,70 @@ function InitDashboard() {
     BindDashboard(dashboardData);
 
     // Populate the Senator Sub-Nav from .json file
-    var senatorNavData = LoadMostPopularData();
+    var senatorNavData = LoadMostPopularData(2);
     BindSenatorsNavBar(senatorNavData);
+
+    $('#SocialMediaLink').addClass("active");
 }
 
 // Function used by mostpopular.html to bind .json data to the page
-function InitMostPopular() {
+function InitMostPopular(timeframe) {
 
     // Populate the Senator Sub-Nav from .json file
-    var senatorNavData = LoadMostPopularData();
-    BindSenatorsNavBar(senatorNavData);
+    var senatorNavData = LoadMostPopularData(timeframe);
 
     // Bind Json data to most popular data table
     BindMostPopular(senatorNavData);
+
+    BindSenatorsNavBar(senatorNavData);
+
+    $('#MostPopularLink').addClass("active");
+
 }
+
+
+// Function used by mostpopular.html to bind .json data to the page
+function InitTrending(timeframe) {
+
+    // Populate the Senator Sub-Nav from .json file
+    var senatorNavData = LoadMostPopularData(timeframe);
+    BindSenatorsNavBar(senatorNavData);
+
+
+    // Bind Json data to most popular data table
+    trendingData = LoadTrendingData(timeframe);
+    BindTrending(trendingData);
+
+    $('#TrendingLink').addClass("active");
+
+    //alert(window.location.href);
+
+}
+
+
+
+function InitNavBar() {
+
+    var senatorNavData = LoadMostPopularData(3);
+    BindSenatorsNavBar(senatorNavData);
+
+
+}
+
 
 // Function Called by senatordashboard.html which will bind data from .json files to the dashboard
 // This page expects a valid SenatorKey value to be passed into the page's query string
 function InitSenatorDashboard(SenatorKey) {
 
     // Populate the Senator Sub-Nav from .json file
-    var senatorNavData = LoadMostPopularData();
+    var senatorNavData = LoadMostPopularData(2);
     BindSenatorsNavBar(senatorNavData);
 
     // Populate Elements in the Main Dashboard
     var senatorDashboardData = LoadSenatorData(SenatorKey);
     BindSenatorDashboard(senatorDashboardData);
 
+    $('#SenatorsLink').addClass("active");
 
 }
 
@@ -219,7 +256,7 @@ function BindSenatorGraph(SenatorDashboardData) {
 function LoadDashboardData() {
     // Load Dashboard Data from .json data file into the dashboardData variable
 
-    var url = "/data/CongressDashboard_1.json";
+    var url = "/data/CongressDashboard_2.json";
     var dashboardData;
     var timeFrameName = "";
 
@@ -242,11 +279,11 @@ function LoadDashboardData() {
     return dashboardData;
 }
 
-function LoadMostPopularData()
+function LoadMostPopularData(timeframe)
     {
     // Load Dashboard Data from .json data file into the dashboardData variable
     
-        var url = "/data/mostpopular.json";
+        var url = "/data/mostpopular_" + timeframe + ".json";
         var mostPopularData;
 
     $.ajax({
@@ -267,6 +304,34 @@ function LoadMostPopularData()
 
     return mostPopularData;
 }
+
+
+function LoadTrendingData(timeframe)
+    {
+    // Load Dashboard Data from .json data file into the dashboardData variable
+    
+        var url = "/data/trending_" + timeframe + ".json";
+        var trendingData;
+
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': url,
+        'dataType': "json",
+        'timeout': 20000,
+        'success': function (data) {
+            trendingData = data;
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.status);
+            alert(thrownError);
+        }
+
+    });
+
+    return trendingData;
+}
+
 
 function LoadSenatorData(SenatorKey)
 {
@@ -549,7 +614,7 @@ function BindSenatorTweetsTable(TweetsData) {
                                       ' <td style="display: none;">"0"</td>' +
                                       ' <td>' +
                                       '     <ul class="tweetsbox">' +
-                                      '         <li><a href="#">' + sen.UserName + '</a><span> on ' + sen.DateCreatedString + '</span><span class="score">Score : ' + sen.TweetScore + '</span></li>' +
+                                      '         <li><a target="_new" href="https://twitter.com/' + sen.UserID + '">' + sen.UserName + '</a><span> on ' + sen.DateCreatedString + '</span><span class="score">Score : ' + sen.TweetScore + '</span></li>' +
                                       '         <li><span class="tweettext">' + sen.TwitterText + '</span></li>';
 
 
@@ -610,7 +675,14 @@ function BindMostPopular(MostPopularData) {
             partyClass = "rep-bkg";
 
 
-        
+        if (MostPopularData[i].RankChange > 0)
+            rankChange = '<span style="color:green;">&nbsp;(+' + MostPopularData[i].RankChange + ")</span>"
+        else
+            rankChange = '<span style="color:red;">&nbsp;(-' + MostPopularData[i].RankChange + ")</span>"
+
+
+
+
 
 
 
@@ -619,7 +691,7 @@ function BindMostPopular(MostPopularData) {
                                      '<td>' + MostPopularData[i].State + '</td>' +
                                     '<td>' + formatNumber(MostPopularData[i].Tweets, { decimals: 0 }) + '</td>' +
                                     '<td>' + formatNumber(MostPopularData[i].Impressions, { decimals: 0 }) + '</td>' +
-                                    '<td>' + MostPopularData[i].SenatorRank + '</td></tr>';
+                                    '<td>' + MostPopularData[i].Rank + rankChange +' </td></tr>';
         $('#MostPopularTable > tbody:last').append(newRow);
     }
 
@@ -648,6 +720,47 @@ function BindMostPopular(MostPopularData) {
 
 
 }
+
+
+function BindTrending(TrendingData) {
+
+    // Columns
+    // Words  Count  Change
+
+
+    for (var i in TrendingData) {
+
+        newRow = '<tr><td><a href="/Search/' + TrendingData[i].Word + '">' + TrendingData[i].Word  + '</a></td>' +
+                                    '<td>' + TrendingData[i].Cnt + '</td><td>' + TrendingData[i].PctChange + '</td></tr>';
+        $('#TrendingWordsTable > tbody:last').append(newRow);
+    }
+
+
+    $('#TrendingWordsTable').dataTable({
+        // set the initial value
+        "iDisplayLength": 50,
+        "data": TrendingData,
+        //  "order": [[2, "desc"]],
+        "sPaginationType": "bootstrap",
+        "bLengthChange": false,
+        "oLanguage": {
+            "oPaginate": {
+                "sPrevious": "Prev",
+                "sNext": "Next"
+            }
+        },
+        "aaSorting": [[0, "desc"]],
+        "aoColumnDefs": [{ 'bSortable': true, 'aTargets': [0], "sType": "numeric" }]
+    });
+
+
+
+
+    jQuery('#influencersTable_wrapper .dataTables_filter input').addClass("form-control input-small");
+
+
+}
+
 
 function BindWordsTable(wordsData) {
 
@@ -684,6 +797,9 @@ function BindSenatorsNavBar(SenatorData)
     var listItem;
     var badge;
 
+    // Re-sort by State
+    SenatorData.sort(compare);
+
 // Loop through each senator and bind each record to a list item
     for (var i in SenatorData)
 {
@@ -696,6 +812,15 @@ function BindSenatorsNavBar(SenatorData)
         listItem = '<li id="senator_' + SenatorData[i].SenatorKey + '"><a href="/SenatorDashboard/' + SenatorData[i].SenatorKey + '" class="senator-menuitem">' + SenatorData[i].SenatorName + '<span class="badge ' + badge + '"> ' + SenatorData[i].Party.substring(0, 1) + '-' + SenatorData[i].StateAbbr + '</span></a></li>';
     $('#SenatorsSubMenu').append(listItem);
  }
+
+
+ function compare(a,b) {
+  if (a.State < b.State)
+    return -1;
+  if (a.State > b.State)
+    return 1;
+  return 0;
+}
 
 }
 

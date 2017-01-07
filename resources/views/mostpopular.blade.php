@@ -39,13 +39,19 @@
                                 <div class="portlet">
                                     <div class="portlet-title">
                                         <div class="caption">
-                                            <i class="fa fa-user"></i>Most Tweeted Senators on Social Media in the last 90 days.
+                                            <i class="fa fa-user"></i>Most Tweeted Senators on Social Media.
                                         </div>
 
 
                                     </div>
 
                                     <div class="portlet-body" id="InfluencerPortlet">
+                                    <p>
+                                      <button type="button" id="btn-timeframe1" onclick="location.href='/MostPopular/1';" class="btn btn-default btn-lg">Last Day</button>
+                                      <button type="button" id="btn-timeframe2" onclick="location.href='/MostPopular/2';" class="btn btn-default btn-lg">Last Week</button>
+                                      <button type="button" id="btn-timeframe3" onclick="location.href='/MostPopular/3';" class="btn btn-default btn-lg">Last 30 Days</button>
+                                      <button type="button" id="btn-timeframe4" onclick="location.href='/MostPopular/4';" class="btn btn-default btn-lg">Last 90 Days</button>
+                                    </p>
 
                                         <table class="table table-bordered table-hover dataTable" id="MostPopularTable">
                                             <thead>
@@ -100,7 +106,13 @@
             <script>
                 jQuery(document).ready(function () {
 
-                    InitMostPopular();
+
+                    timeframe = {{$timeframe}};
+                    // Change the highlighted button
+                    $('#btn-timeframe' + timeframe).addClass('btn-primary');
+
+
+                    InitMostPopular(timeframe);
 
                 });
 

@@ -66,25 +66,25 @@
                     <ul class="page-sidebar-menu">
 
                         <li>
-                            <form class="" role="form" action="http://cscie12.dce.harvard.edu/echo" method="post">
+                            <form class="" role="form" action="/Search" method="post">
+                            {{ csrf_field() }}
                                 <div class="searchbox">
-                                    <input type="text" class="form-control input-medium" name="SearchTerm" placeholder="Search...">
+                                    <input type="text" class="form-control input-medium" name="search-term" id="search-term" placeholder="Search...">
                                 </div>
                             </form>
                         </li>
 
 
 
-                        <li class="start active ">
+                        <li id="SocialMediaLink" class="start">
                             <a href="/SenateDashboard">
                                 <i class="fa fa-bar-chart-o"></i>
-                                <span class="active">Social Media
-                                </span>
+                                <span class="active">Social Media</span>
                                 <span class="selected"></span>
                             </a>
                         </li>
 
-                        <li class="closed">
+                        <li id="SenatorsLink" class="closed">
                             <a href="#" onclick="$('#SenatorsSubMenu').toggle();">
                                 <img src="/img/open.png" class="nav-img" alt="open" />
                                 <span class="title">Senators </span>
@@ -96,35 +96,26 @@
 
 
 
-                        <li class="">
-                            <a href="/MostPopular">
+                        <li id="MostPopularLink" class="">
+                            <a href="/MostPopular/1">
                                 <i class="fa fa-user"></i>
-                                <span class="active">Most Popular Senators
-                                </span>
+                                <span class="active">Most Popular Senators</span>
                                 <span class="selected"></span>
                             </a>
                         </li>
 
 
 
-                        <li class="">
-                            <a href="#">
+                        <li id="TrendingLink" class="">
+                            <a href="/Trending/2">
                                 <i class="fa fa-user"></i>
-                                <span class="active">Bills
-                                </span>
+                                <span class="active">Trending</span>
                                 <span class="selected"></span>
                             </a>
                         </li>
 
 
-                        <li class="">
-                            <a href="#">
-                                <i class="fa fa-user"></i>
-                                <span class="active">Session Schedule
-                                </span>
-                                <span class="selected"></span>
-                            </a>
-                        </li>
+
 
 
                     </ul>
