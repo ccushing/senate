@@ -92,7 +92,7 @@ class SenateDashboardController extends Controller {
     public function postSearch(Request $request) {
 
 
-        $searchTerm = $request->input("search-term");
+        $searchterm = $request->input("search-term");
         $items = $this->search($searchterm);
 
         # Pagination needs to be done manually with raw SQL queries
