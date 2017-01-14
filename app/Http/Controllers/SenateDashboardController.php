@@ -99,7 +99,7 @@ class SenateDashboardController extends Controller {
         $page = $request->input('page', 1); 
         $tweets = $this->setupPagination($items,$page,100);
 
-        return view('search', ['title' => "Search Results for \"".$searchTerm."\"",'tweets' => $tweets]);
+        return view('search', ['title' => "Search Results for \"".$searchterm."\"",'tweets' => $tweets]);
     
 
     }
