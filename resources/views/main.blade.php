@@ -84,18 +84,6 @@
                             </a>
                         </li>
 
-                        <li id="SenatorsLink" class="closed">
-                            <a href="#" onclick="$('#SenatorsSubMenu').toggle();">
-                                <img src="/img/open.png" class="nav-img" alt="open" />
-                                <span class="title">Senators </span>
-
-                            </a>
-                            <ul class="sub-menu" id="SenatorsSubMenu">
-                            </ul>
-                        </li>
-
-
-
                         <li id="MostPopularLink" class="">
                             <a href="/MostPopular/1">
                                 <i class="fa fa-user"></i>
@@ -114,8 +102,15 @@
                             </a>
                         </li>
 
+                        <li id="SenatorsLink" class="closed">
+                            <a href="#" onclick="$('#SenatorsSubMenu').toggle();">
+                                <img src="/img/open.png" class="nav-img" alt="open" />
+                                <span class="title">Senators </span>
 
-
+                            </a>
+                            <ul class="sub-menu" id="SenatorsSubMenu" style="display: block;">
+                            </ul>
+                        </li>
 
 
                     </ul>
