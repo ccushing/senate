@@ -115,7 +115,7 @@ function BindSenatorBio(SenatorDashboardData) {
     }
 
     // Open the Sub-Menu & Highlight the Selected Senator
-    $('#SenatorsSubMenu').toggle();
+    //$('#SenatorsSubMenu').toggle();
     $('#senator_' + SenatorDashboardData.SenatorKey).addClass('active-item');
 
     // Fill in the Bio Info
@@ -802,17 +802,19 @@ function BindSenatorsNavBar(SenatorData)
 
 // Loop through each senator and bind each record to a list item
     for (var i in SenatorData)
-{
+    {
         if (SenatorData[i].Party == "Democratic")
-        badge = "dem";
-    else
-        badge = "rep";
+            badge = "dem";
+        else
+            badge = "rep";
 
 
-        listItem = '<li id="senator_' + SenatorData[i].SenatorKey + '"><a href="/SenatorDashboard/' + SenatorData[i].SenatorKey + '" class="senator-menuitem">' + SenatorData[i].SenatorName + '<span class="badge ' + badge + '"> ' + SenatorData[i].Party.substring(0, 1) + '-' + SenatorData[i].StateAbbr + '</span></a></li>';
-    $('#SenatorsSubMenu').append(listItem);
- }
+            listItem = '<li id="senator_' + SenatorData[i].SenatorKey + '"><a href="/SenatorDashboard/' + SenatorData[i].SenatorKey + '" class="senator-menuitem">' + SenatorData[i].SenatorName + '<span class="badge ' + badge + '"> ' + SenatorData[i].Party.substring(0, 1) + '-' + SenatorData[i].StateAbbr + '</span></a></li>';
+        $('#SenatorsSubMenu').append(listItem);
+    }
 
+
+}
 
  function compare(a,b) {
   if (a.State < b.State)
@@ -821,9 +823,5 @@ function BindSenatorsNavBar(SenatorData)
     return 1;
   return 0;
 }
-
-}
-
-
 
 
